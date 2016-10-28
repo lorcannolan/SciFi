@@ -52,8 +52,29 @@ void drawLines()
   float bottomLineY2 = height - (height / 4);
   float bottomLineX1 = width - (width / 25);
   float bottomLineX2 = width - 3 * (width / 4);
+  float gap = width / 300;
+  
   strokeWeight(1);
+  //stroke(255);
   stroke(234, 228, 12);
-  line(width, bottomLineY1, bottomLineX1, bottomLineY2);
-  line(bottomLineX1, bottomLineY2, bottomLineX2, bottomLineY2);
+  
+  //drawing bottom line
+  line(width, bottomLineY1, bottomLineX1, bottomLineY2 + gap);
+  line(bottomLineX1, bottomLineY2 + gap, bottomLineX2 + (width - bottomLineX1), bottomLineY2 + gap);
+  line(bottomLineX2 + (width - bottomLineX1), bottomLineY2 + gap, bottomLineX2 + gap, bottomLineY1);
+  line(bottomLineX2 + gap, bottomLineY1, bottomLineX2 + gap, height);
+  
+  //drawing corner box
+  line(0, bottomLineY1, width / 25, bottomLineY2 + gap);
+  line(width / 25, bottomLineY2 + gap, bottomLineX2 - (width - bottomLineX1), bottomLineY2 + gap);
+  line(bottomLineX2 - (width - bottomLineX1), bottomLineY2 + gap, bottomLineX2 - gap, bottomLineY1);
+  line(bottomLineX2 - gap, bottomLineY1, bottomLineX2 - gap, height);
+  
+  //drawing left box
+  line(0, bottomLineY2 - (bottomLineY1 - bottomLineY2), width / 25, bottomLineY2 - gap);
+  line(width / 25, bottomLineY2 - gap, bottomLineX2 - (width - bottomLineX1), bottomLineY2 - gap);
+  
+  //drawing main box
+  line(width, bottomLineY2 - (bottomLineY1 - bottomLineY2), bottomLineX1, bottomLineY2 - gap);
+  
 }
