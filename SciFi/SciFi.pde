@@ -8,7 +8,6 @@ void setup()
   textFont(font);
   oxygenLevel = random(0, 100);
   oxygenLevelDegrees = (oxygenLevel / 100) * 360;
-  println(oxygenLevel, oxygenLevelDegrees);
 }
 
 float c1x;
@@ -19,6 +18,7 @@ String o2 = "O2 Level:";
 
 void draw()
 {
+  drawLines();
   drawBottomCircle();
   drawBottomArc();
 }
@@ -44,4 +44,16 @@ void drawBottomArc()
   strokeWeight(7);
   noFill();
   arc(c1x, c1y, width / 10, width / 10, -HALF_PI, radians(oxygenLevelDegrees) - HALF_PI);
+}
+
+void drawLines()
+{
+  float bottomLineY1 = height - (height / 5);
+  float bottomLineY2 = height - (height / 4);
+  float bottomLineX1 = width - (width / 25);
+  float bottomLineX2 = width - 3 * (width / 4);
+  strokeWeight(1);
+  stroke(234, 228, 12);
+  line(width, bottomLineY1, bottomLineX1, bottomLineY2);
+  line(bottomLineX1, bottomLineY2, bottomLineX2, bottomLineY2);
 }
