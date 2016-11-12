@@ -1,59 +1,41 @@
+oTwo oxygen;
 PFont font;
 
 void setup()
 {
-  fullScreen(P2D);
-  background(59, 71, 72);
+  fullScreen();
   font = createFont("AR DESTINE", 60);
   textFont(font);
-  oxygenLevel = random(0, 100);
-  oxygenLevelDegrees = (oxygenLevel / 100) * 360;
+  oxygen = new oTwo(width - (width / 8), height - (height / 8),  width / 10, 14, random(90, 100), "o2 Level:");
+  bottomLineY1 = height - (height / 5);
+  bottomLineY2 = height - (height / 4);
+  bottomLineX1 = width - (width / 25);
+  bottomLineX2 = width - 3 * (width / 4);
+  gap = width / 300;
+  menuX = (bottomLineX2 - gap) / 2;
+  menuY1 = bottomLineY2 - 4 * (bottomLineY2 / 5);
+  menuY2 = bottomLineY2 - 3 * (bottomLineY2 / 5);
+  menuY3 = bottomLineY2 - 2 * (bottomLineY2 / 5);
+  menuY4 = bottomLineY2 - (bottomLineY2 / 5);
+  menuGap = menuY2 - menuY1;
 }
 
-float c1x;
-float c1y;
-float oxygenLevel;
-float oxygenLevelDegrees;
-String o2 = "O2 Level:";
+float bottomLineY1, bottomLineY2, bottomLineX1, bottomLineX2, gap;
+float menuX, menuY1, menuY2, menuY3, menuY4, menuGap;
 
 void draw()
 {
+  background(59, 71, 72);
   drawLines();
-  drawBottomCircle();
-  drawBottomArc();
-}
-
-void drawBottomCircle()
-{
-  c1x = width - (width / 8);
-  c1y = height - (height / 8);
-  stroke(255);
-  strokeWeight(2);
-  fill(59, 71, 72);
-  ellipse(c1x, c1y, width / 10, width / 10);
-  textAlign(CENTER);
-  fill(255);
-  textSize(20);
-  text(o2, c1x, c1y - (width / 100));
-  text((int)oxygenLevel + "%", c1x, c1y + (width / 100));
-}
-
-void drawBottomArc()
-{
-  stroke(36, 231, 255);
-  strokeWeight(7);
-  noFill();
-  arc(c1x, c1y, width / 10, width / 10, -HALF_PI, radians(oxygenLevelDegrees) - HALF_PI);
+  oxygen.circle();
+  oxygen.outerBlueArc();
+  oxygen.outerRedArc();
+  //oxygen.decrease();
+  drawMenu();
 }
 
 void drawLines()
 {
-  float bottomLineY1 = height - (height / 5);
-  float bottomLineY2 = height - (height / 4);
-  float bottomLineX1 = width - (width / 25);
-  float bottomLineX2 = width - 3 * (width / 4);
-  float gap = width / 300;
-  
   strokeWeight(1);
   stroke(255);
   //stroke(234, 228, 12);
@@ -84,5 +66,21 @@ void drawLines()
   line(bottomLineX2 + gap, 0 + (bottomLineY1 - bottomLineY2), bottomLineX2 + gap, bottomLineY2 - (bottomLineY1 - bottomLineY2));
   line(bottomLineX2 + gap, bottomLineY2 - (bottomLineY1 - bottomLineY2), bottomLineX2 + (width - bottomLineX1), bottomLineY2 - gap);
   line(bottomLineX2 + (width - bottomLineX1), bottomLineY2 - gap, bottomLineX1, bottomLineY2 - gap);
-  line( bottomLineX1, bottomLineY2 - gap, width, bottomLineY2 - (bottomLineY1 - bottomLineY2));
+  line(bottomLineX1, bottomLineY2 - gap, width, bottomLineY2 - (bottomLineY1 - bottomLineY2));
+}
+
+void drawMenu()
+{
+  textAlign(CENTER);
+  fill(255);
+  textSize(height / 25);
+  noLoop();
+  text("Menu", menuX, menuY1);
+  noFill();
+  strokeWeight(1);
+  stroke(255);
+  rect(0, menuY1 / 2, bottomLineX2 - gap, menuGap);
+  text("Menu", menuX,  menuY2);
+  text("Menu", menuX,  menuY3);
+  text("Menu", menuX,  menuY4);
 }
