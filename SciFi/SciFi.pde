@@ -3,10 +3,11 @@ PFont font;
 
 void setup()
 {
-  fullScreen();
+  //fullScreen();
+  size(1000, 700);
   font = createFont("AR DESTINE", 60);
   textFont(font);
-  oxygen = new oTwo(width - (width / 8), height - (height / 8),  width / 10, 14, random(90, 100), "o2 Level:");
+  oxygen = new oTwo(width - (width / 8), height - (height / 8),  width / 10, 14, random(95, 100), "o2 Level:");
   bottomLineY1 = height - (height / 5);
   bottomLineY2 = height - (height / 4);
   bottomLineX1 = width - (width / 25);
@@ -30,7 +31,7 @@ void draw()
   oxygen.circle();
   oxygen.outerBlueArc();
   oxygen.outerRedArc();
-  //oxygen.decrease();
+  oxygen.decrease();
   drawMenu();
 }
 
@@ -74,7 +75,6 @@ void drawMenu()
   textAlign(CENTER);
   fill(255);
   textSize(height / 25);
-  noLoop();
   text("Menu", menuX, menuY1);
   noFill();
   strokeWeight(1);

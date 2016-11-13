@@ -5,20 +5,22 @@ class oTwo
   float size;
   float startAngle;
   float oxygenLevel;
+  float emergencyOxygen;
   float finishAngle;
   String oxLevel;
   
-  oTwo(float cx, float cy, float size, float startAngle, float oxygenLevel, String oxLevel)
+  oTwo(float cx, float cy, float size, float emergencyOxygen, float oxygenLevel, String oxLevel)
   {
     this.cx = cx; 
     this.cy = cy;
     this.size = size;
-    this.startAngle = (startAngle / 100) * 360;
+    this.emergencyOxygen = emergencyOxygen;
+    startAngle = (emergencyOxygen / 100) * 360;
     this.oxygenLevel = oxygenLevel;
     finishAngle = (oxygenLevel / 100) * 360;
     this.oxLevel = oxLevel;
   }
-   
+  
   void circle()
   {
     stroke(255);
@@ -48,8 +50,20 @@ class oTwo
     arc(cx, cy, size, size, -HALF_PI, -HALF_PI + radians(startAngle));
   }
   
-  /*void decrease()
+  void decrease()
   {
-    oxygenLevel--;
-  }*/
+    if (frameCount % 60 == 0)
+    {
+        if (oxygenLevel >= emergencyOxygen)
+        {
+          oxygenLevel = oxygenLevel - .1;
+          finishAngle = (oxygenLevel / 100) * 360;
+        }
+        else if (oxygenLevel <= emergencyOxygen && emergencyOxygen > 0)
+        {
+          emergencyOxygen = emergencyOxygen - .1;
+          startAngle = (emergencyOxygen / 100) * 360;
+        }
+    }
+  }
 }
