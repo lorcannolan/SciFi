@@ -1,4 +1,5 @@
 oTwo oxygen;
+Menu menu;
 PFont font;
 
 void setup()
@@ -13,6 +14,7 @@ void setup()
   bottomLineX1 = width - (width / 25);
   bottomLineX2 = width - 3 * (width / 4);
   gap = width / 300;
+  menu = new Menu(bottomLineY1 - bottomLineY2, bottomLineX2 - gap, ((bottomLineY2 - (bottomLineY1 - bottomLineY2)) - (bottomLineY1 - bottomLineY2)));
   menuX = (bottomLineX2 - gap) / 2;
   menuY1 = bottomLineY2 - 4 * (bottomLineY2 / 5);
   menuY2 = bottomLineY2 - 3 * (bottomLineY2 / 5);
@@ -32,7 +34,8 @@ void draw()
   oxygen.outerBlueArc();
   oxygen.outerRedArc();
   oxygen.decrease();
-  drawMenu();
+  menu.hover();
+  //drawMenu();
 }
 
 void drawLines()

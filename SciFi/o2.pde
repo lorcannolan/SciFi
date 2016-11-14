@@ -1,7 +1,6 @@
 class oTwo
 {
-  float cx;
-  float cy;
+  PVector centre;
   float size;
   float startAngle;
   float oxygenLevel;
@@ -9,10 +8,9 @@ class oTwo
   float finishAngle;
   String oxLevel;
   
-  oTwo(float cx, float cy, float size, float emergencyOxygen, float oxygenLevel, String oxLevel)
+  oTwo(float x, float y, float size, float emergencyOxygen, float oxygenLevel, String oxLevel)
   {
-    this.cx = cx; 
-    this.cy = cy;
+    centre = new PVector(x, y);
     this.size = size;
     this.emergencyOxygen = emergencyOxygen;
     startAngle = (emergencyOxygen / 100) * 360;
@@ -26,12 +24,12 @@ class oTwo
     stroke(255);
     strokeWeight(2);
     fill(59, 71, 72);
-    ellipse(cx, cy, size, size);
+    ellipse(centre.x, centre.y, size, size);
     textAlign(CENTER);
     fill(255);
     textSize(size / 6);
-    text(oxLevel, cx, cy - (size / 8));
-    text(nf(oxygenLevel, 0, 1) + "%", cx, cy + (size / 8));
+    text(oxLevel, centre.x, centre.y - (size / 8));
+    text(nf(oxygenLevel, 0, 1) + "%", centre.x, centre.y + (size / 8));
   }
   
   void outerBlueArc()
@@ -39,7 +37,7 @@ class oTwo
     stroke(36, 231, 255);
     strokeWeight(7);
     noFill();
-    arc(cx, cy, size, size, -HALF_PI + radians(startAngle), radians(finishAngle) - HALF_PI);
+    arc(centre.x, centre.y, size, size, -HALF_PI + radians(startAngle), radians(finishAngle) - HALF_PI);
   }
   
   void outerRedArc()
@@ -47,12 +45,12 @@ class oTwo
     stroke(250, 48, 38);
     strokeWeight(7);
     noFill();
-    arc(cx, cy, size, size, -HALF_PI, -HALF_PI + radians(startAngle));
+    arc(centre.x, centre.y, size, size, -HALF_PI, -HALF_PI + radians(startAngle));
   }
   
   void decrease()
   {
-    if (frameCount % 60 == 0)
+    if (frameCount % 100 == 0)
     {
         if (oxygenLevel >= emergencyOxygen)
         {
