@@ -4,8 +4,8 @@ PFont font;
 
 void setup()
 {
-  //fullScreen();
-  size(1000, 700);
+  fullScreen();
+  //size(1000, 700);
   font = createFont("AR DESTINE", 60);
   textFont(font);
   oxygen = new oTwo(width - (width / 8), height - (height / 8),  width / 10, 14, random(95, 100), "o2 Level:");
@@ -34,6 +34,7 @@ void draw()
   oxygen.outerBlueArc();
   oxygen.outerRedArc();
   oxygen.decrease();
+  menu.options();
   menu.hover();
   //drawMenu();
 }
