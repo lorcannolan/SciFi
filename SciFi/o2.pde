@@ -23,7 +23,8 @@ class oTwo
   {
     stroke(255);
     strokeWeight(2);
-    fill(59, 71, 72);
+    noFill();
+    //fill(59, 71, 72);
     ellipse(centre.x, centre.y, size, size);
     textAlign(CENTER);
     fill(255);

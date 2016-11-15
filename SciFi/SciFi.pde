@@ -1,5 +1,6 @@
 oTwo oxygen;
 Menu menu;
+//BackG back;
 PFont font;
 
 void setup()
@@ -14,21 +15,19 @@ void setup()
   bottomLineX1 = width - (width / 25);
   bottomLineX2 = width - 3 * (width / 4);
   gap = width / 300;
+  col1 = color(59, 71, 72);
+  col2 = color(0, 103, 111);
   menu = new Menu(bottomLineY1 - bottomLineY2, bottomLineX2 - gap, ((bottomLineY2 - (bottomLineY1 - bottomLineY2)) - (bottomLineY1 - bottomLineY2)));
-  menuX = (bottomLineX2 - gap) / 2;
-  menuY1 = bottomLineY2 - 4 * (bottomLineY2 / 5);
-  menuY2 = bottomLineY2 - 3 * (bottomLineY2 / 5);
-  menuY3 = bottomLineY2 - 2 * (bottomLineY2 / 5);
-  menuY4 = bottomLineY2 - (bottomLineY2 / 5);
-  menuGap = menuY2 - menuY1;
+  //back = new BackG(0, 0, width, height, col1, col2);
 }
 
 float bottomLineY1, bottomLineY2, bottomLineX1, bottomLineX2, gap;
-float menuX, menuY1, menuY2, menuY3, menuY4, menuGap;
+color col1, col2;
 
 void draw()
 {
   background(59, 71, 72);
+  //back.gradient();
   drawLines();
   oxygen.circle();
   oxygen.outerBlueArc();
@@ -36,7 +35,6 @@ void draw()
   oxygen.decrease();
   menu.options();
   menu.hover();
-  //drawMenu();
 }
 
 void drawLines()
@@ -72,19 +70,4 @@ void drawLines()
   line(bottomLineX2 + gap, bottomLineY2 - (bottomLineY1 - bottomLineY2), bottomLineX2 + (width - bottomLineX1), bottomLineY2 - gap);
   line(bottomLineX2 + (width - bottomLineX1), bottomLineY2 - gap, bottomLineX1, bottomLineY2 - gap);
   line(bottomLineX1, bottomLineY2 - gap, width, bottomLineY2 - (bottomLineY1 - bottomLineY2));
-}
-
-void drawMenu()
-{
-  textAlign(CENTER);
-  fill(255);
-  textSize(height / 25);
-  text("Menu", menuX, menuY1);
-  noFill();
-  strokeWeight(1);
-  stroke(255);
-  rect(0, menuY1 / 2, bottomLineX2 - gap, menuGap);
-  text("Menu", menuX,  menuY2);
-  text("Menu", menuX,  menuY3);
-  text("Menu", menuX,  menuY4);
 }
