@@ -10,6 +10,7 @@ class Menu
     this.menuWidth = menuWidth;
     this.menuHeight = menuHeight;
   }
+   
   
   void options()
   {
@@ -22,7 +23,7 @@ class Menu
     text("More Info", menuWidth / 2, menuHeight - menuTop);
   }
   
-  void hover()
+  int hover()
   {
     if (mouseX >= 0 && mouseX <= menuWidth && mouseY >= menuTop && mouseY <= menuTop + (menuHeight / 4))
     {
@@ -33,6 +34,10 @@ class Menu
       fill(59, 71, 72);
       textSize(menuTop);
       text("Home", menuWidth / 2, (menuHeight / 4) - menuTop);
+      if (mousePressed == true)
+      {
+        chosenMenu = 1;
+      }
     }
     if (mouseX >= 0 && mouseX <= menuWidth && mouseY >= menuTop + (menuHeight / 4) && mouseY <= menuTop + (menuHeight / 4) * 2)
     {
@@ -43,6 +48,10 @@ class Menu
       fill(59, 71, 72);
       textSize(menuTop);
       text("Crew", menuWidth / 2, 2 * (menuHeight / 4) - menuTop);
+      if (mousePressed == true)
+      {
+        chosenMenu = 2;
+      }
     }
     if (mouseX >= 0 && mouseX <= menuWidth && mouseY >= menuTop + (menuHeight / 4) * 2 && mouseY <= menuTop + (menuHeight / 4) * 3)
     {
@@ -53,6 +62,10 @@ class Menu
       fill(59, 71, 72);
       textSize(menuTop);
       text("Info", menuWidth / 2, 3 * (menuHeight / 4) - menuTop);
+      if (mousePressed == true)
+      {
+        chosenMenu = 3;
+      }
     }
     if (mouseX >= 0 && mouseX <= menuWidth && mouseY >= menuTop + (menuHeight / 4) * 3 && mouseY <= menuTop + (menuHeight / 4) * 4)
     {
@@ -63,6 +76,11 @@ class Menu
       fill(59, 71, 72);
       textSize(menuTop);
       text("More Info", menuWidth / 2, menuHeight - menuTop);
+      if (mousePressed == true)
+      {
+        chosenMenu = 4;
+      }
     }
+    return chosenMenu;
   }
 }

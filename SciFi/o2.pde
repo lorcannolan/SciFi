@@ -49,20 +49,21 @@ class oTwo
     arc(centre.x, centre.y, size, size, -HALF_PI, -HALF_PI + radians(startAngle));
   }
   
-  void decrease()
+  float decrease()
   {
     if (frameCount % 100 == 0)
     {
         if (oxygenLevel >= emergencyOxygen)
         {
-          oxygenLevel = oxygenLevel - .1;
+          oxygenLevel = oxygenLevel - .05;
           finishAngle = (oxygenLevel / 100) * 360;
         }
         else if (oxygenLevel <= emergencyOxygen && emergencyOxygen > 0)
         {
-          emergencyOxygen = emergencyOxygen - .1;
+          emergencyOxygen = emergencyOxygen - .05;
           startAngle = (emergencyOxygen / 100) * 360;
         }
     }
+    return oxygenLevel;
   }
 }

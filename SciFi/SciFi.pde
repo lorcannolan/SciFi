@@ -1,12 +1,12 @@
-oTwo oxygen;
+oTwo oxygen, oxygenHome;
 Menu menu;
 //BackG back;
 PFont font;
 
 void setup()
 {
-  fullScreen();
-  //size(1000, 700);
+  //fullScreen();
+  size(1000, 700);
   font = createFont("AR DESTINE", 60);
   textFont(font);
   oxygen = new oTwo(width - (width / 8), height - (height / 8),  width / 10, 14, random(95, 100), "o2 Level:");
@@ -23,6 +23,7 @@ void setup()
 
 float bottomLineY1, bottomLineY2, bottomLineX1, bottomLineX2, gap;
 color col1, col2;
+int chosenMenu = 1;
 
 void draw()
 {
@@ -35,6 +36,13 @@ void draw()
   oxygen.decrease();
   menu.options();
   menu.hover();
+  if (chosenMenu == 1)
+  {
+      oxygenHome = new oTwo(width / 2, height / 2,  width / 10, 14, oxygen.decrease(), "o2 Level:");
+      oxygenHome.circle();
+      oxygenHome.outerBlueArc();
+      oxygenHome.outerRedArc();
+  }
 }
 
 void drawLines()
