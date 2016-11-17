@@ -1,4 +1,5 @@
 oTwo oxygen, oxygenHome;
+Temp temperature, temperature2;
 Menu menu;
 //BackG back;
 PFont font;
@@ -10,6 +11,7 @@ void setup()
   font = createFont("AR DESTINE", 60);
   textFont(font);
   oxygen = new oTwo(width - (width / 8), height - (height / 8),  width / 10, 14, random(95, 100), "o2 Level:");
+  temperature = new Temp(width - (width / 8) * 3.25 , height - (height / 5),  width / 10, color(255, 0, 0), color(0, 0, 255));
   bottomLineY1 = height - (height / 5);
   bottomLineY2 = height - (height / 4);
   bottomLineX1 = width - (width / 25);
@@ -34,14 +36,19 @@ void draw()
   oxygen.outerBlueArc();
   oxygen.outerRedArc();
   oxygen.decrease();
+  temperature.display();
   menu.options();
   menu.hover();
-  if (chosenMenu == 1)
+  if (chosenMenu == 3)
   {
-      oxygenHome = new oTwo(width / 2, height / 2,  width / 10, 14, oxygen.decrease(), "o2 Level:");
+      oxygenHome = new oTwo(width / 3, height / 8,  width / 10, 14, oxygen.decrease(), "o2 Level:");
       oxygenHome.circle();
       oxygenHome.outerBlueArc();
       oxygenHome.outerRedArc();
+      temperature2 = new Temp(width - (width / 8), height / 4,  width / 10, color(255, 0, 0), color(0, 0, 255));; 
+      temperature2.display();
+      temperature2.increase();
+      temperature2.decrease();
   }
 }
 

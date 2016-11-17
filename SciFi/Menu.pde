@@ -19,7 +19,7 @@ class Menu
     textSize(menuTop);
     text("Home", menuWidth / 2, (menuHeight / 4) - menuTop);
     text("Crew", menuWidth / 2, 2 * (menuHeight / 4) - menuTop);
-    text("Info", menuWidth / 2, 3 * (menuHeight / 4) - menuTop);
+    text("Status", menuWidth / 2, 3 * (menuHeight / 4) - menuTop);
     text("More Info", menuWidth / 2, menuHeight - menuTop);
   }
   
@@ -61,7 +61,7 @@ class Menu
       textAlign(CENTER, CENTER);
       fill(59, 71, 72);
       textSize(menuTop);
-      text("Info", menuWidth / 2, 3 * (menuHeight / 4) - menuTop);
+      text("Status", menuWidth / 2, 3 * (menuHeight / 4) - menuTop);
       if (mousePressed == true)
       {
         chosenMenu = 3;
