@@ -4,14 +4,11 @@ class Temp
   float size;
   color c1;
   color c2;
-  float lineX, lineY;
   
   Temp(float x, float y, float size, color c1, color c2)
   {
     topLeft = new PVector(x, y);
     this.size = size;
-    lineX = topLeft.x;
-    lineY = topLeft.y + (size / 2);
     this.c1 = c1;
     this.c2 = c2;
   }
@@ -31,7 +28,7 @@ class Temp
     }
     popMatrix();
     stroke(255);
-    line(lineX, lineY, lineX + size, lineY);
+    line(xPos, yPos, xPos + size, yPos);
   }
   
   void increase()
@@ -49,9 +46,10 @@ class Temp
       stroke(59, 71, 72);
       line((topLeft.x - size / 2) + (size / 2.5) / 2, topLeft.y + (size / 10), (topLeft.x - size / 2) + (size / 2.5) / 2, topLeft.y + (size / 2.5) - (size / 10));
       line((topLeft.x - size / 2) + (size / 10), topLeft.y + (size / 2.5) / 2, (topLeft.x - size / 2) + (size / 2.5) - (size / 10), topLeft.y + (size / 2.5) / 2);
-      if (mousePressed == true)
+      if (mousePressed)
       {
-        lineY -= 1;
+        yPos -= 1;
+        println(yPos);
       }
     }
   }
@@ -71,9 +69,8 @@ class Temp
       line((topLeft.x - size / 2) + (size / 10), (topLeft.y + size / 2) + (size / 2.5) / 2, (topLeft.x - size / 2) + (size / 2.5) - (size / 10), (topLeft.y + size / 2) + (size / 2.5) / 2);
       if (mousePressed == true)
       {
-        lineY += 1;
-        stroke(255);
-        line(lineX, lineY, lineX + size, lineY);
+        yPos += 1;
+        println(yPos);
       }
     }
   }

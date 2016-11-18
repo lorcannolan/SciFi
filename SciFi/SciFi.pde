@@ -11,7 +11,7 @@ void setup()
   font = createFont("AR DESTINE", 60);
   textFont(font);
   oxygen = new oTwo(width - (width / 8), height - (height / 8),  width / 10, 14, random(95, 100), "o2 Level:");
-  temperature = new Temp(width - (width / 8) * 3.25 , height - (height / 5),  width / 10, color(255, 0, 0), color(0, 0, 255));
+  //temperature = new Temp(width - (width / 8) * 3.25 , height - (height / 5),  width / 10, color(255, 0, 0), color(0, 0, 255));
   bottomLineY1 = height - (height / 5);
   bottomLineY2 = height - (height / 4);
   bottomLineX1 = width - (width / 25);
@@ -21,11 +21,14 @@ void setup()
   col2 = color(0, 103, 111);
   menu = new Menu(bottomLineY1 - bottomLineY2, bottomLineX2 - gap, ((bottomLineY2 - (bottomLineY1 - bottomLineY2)) - (bottomLineY1 - bottomLineY2)));
   //back = new BackG(0, 0, width, height, col1, col2);
+  xPos = width - (width / 8);
+  yPos = height / 4 + (width / 10) / 2;
 }
 
 float bottomLineY1, bottomLineY2, bottomLineX1, bottomLineX2, gap;
 color col1, col2;
 int chosenMenu = 1;
+float xPos, yPos;
 
 void draw()
 {
@@ -36,7 +39,7 @@ void draw()
   oxygen.outerBlueArc();
   oxygen.outerRedArc();
   oxygen.decrease();
-  temperature.display();
+  //temperature.display();
   menu.options();
   menu.hover();
   if (chosenMenu == 3)
@@ -45,7 +48,7 @@ void draw()
       oxygenHome.circle();
       oxygenHome.outerBlueArc();
       oxygenHome.outerRedArc();
-      temperature2 = new Temp(width - (width / 8), height / 4,  width / 10, color(255, 0, 0), color(0, 0, 255));; 
+      temperature2 = new Temp(width - (width / 8), height / 4,  width / 10, color(255, 0, 0), color(0, 0, 255));
       temperature2.display();
       temperature2.increase();
       temperature2.decrease();
