@@ -28,7 +28,7 @@ class Temp
     }
     popMatrix();
     stroke(255);
-    line(xPos, yPos, xPos + size, yPos);
+    line(topLeft.x, tempLine, topLeft.x + size, tempLine);
   }
   
   void increase()
@@ -48,8 +48,10 @@ class Temp
       line((topLeft.x - size / 2) + (size / 10), topLeft.y + (size / 2.5) / 2, (topLeft.x - size / 2) + (size / 2.5) - (size / 10), topLeft.y + (size / 2.5) / 2);
       if (mousePressed)
       {
-        yPos -= 1;
-        println(yPos);
+        if(tempLine > topLeft.y)
+        {
+          tempLine -= .1;
+        }
       }
     }
   }
@@ -69,9 +71,20 @@ class Temp
       line((topLeft.x - size / 2) + (size / 10), (topLeft.y + size / 2) + (size / 2.5) / 2, (topLeft.x - size / 2) + (size / 2.5) - (size / 10), (topLeft.y + size / 2) + (size / 2.5) / 2);
       if (mousePressed == true)
       {
-        yPos += 1;
-        println(yPos);
+        if (tempLine < topLeft.y + size)
+        {
+          tempLine += .1;
+        }
       }
     }
+  }
+  
+  void tempValue()
+  {
+    textAlign(CENTER);
+    textSize(size / 2);
+    fill(255);
+    float degreesCel = map(tempLine, topLeft.y, topLeft.y + size, 24, 20);
+    text(nf(degreesCel, 0, 1) + "\u00b0" + "C", width - (width / 8) * 3, height - (height / 8));
   }
 }
