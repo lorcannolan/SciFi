@@ -41,7 +41,7 @@ class Temp
     line((topLeft.x - size / 2) + (size / 10), topLeft.y + (size / 2.5) / 2, (topLeft.x - size / 2) + (size / 2.5) - (size / 10), topLeft.y + (size / 2.5) / 2);
     if (mouseX >= topLeft.x - size / 2 && mouseY >= topLeft.y && mouseX <= (topLeft.x - size / 2) + size / 2.5 && mouseY <= topLeft.y + size / 2.5)
     {
-      fill(255);
+      fill(255, 230);
       rect(topLeft.x - size / 2, topLeft.y, size / 2.5, size / 2.5);
       stroke(59, 71, 72);
       line((topLeft.x - size / 2) + (size / 2.5) / 2, topLeft.y + (size / 10), (topLeft.x - size / 2) + (size / 2.5) / 2, topLeft.y + (size / 2.5) - (size / 10));
@@ -50,6 +50,9 @@ class Temp
       {
         if(tempLine > topLeft.y)
         {
+          stroke(59, 71, 72);
+          noFill();
+          rect(topLeft.x - size / 2, topLeft.y, size / 2.5, size / 2.5);
           tempLine -= .1;
         }
       }
@@ -65,7 +68,7 @@ class Temp
     line((topLeft.x - size / 2) + (size / 10), (topLeft.y + size / 2) + (size / 2.5) / 2, (topLeft.x - size / 2) + (size / 2.5) - (size / 10), (topLeft.y + size / 2) + (size / 2.5) / 2);
     if (mouseX >= topLeft.x - size / 2 && mouseY >= topLeft.y + size / 2 && mouseX <= (topLeft.x - size / 2) + size / 2.5 && mouseY <= topLeft.y + size)
     {
-      fill(255);
+      fill(255, 230);
       rect(topLeft.x - size / 2, topLeft.y + size / 2, size / 2.5, size / 2.5);
       stroke(59, 71, 72);
       line((topLeft.x - size / 2) + (size / 10), (topLeft.y + size / 2) + (size / 2.5) / 2, (topLeft.x - size / 2) + (size / 2.5) - (size / 10), (topLeft.y + size / 2) + (size / 2.5) / 2);
@@ -73,6 +76,9 @@ class Temp
       {
         if (tempLine < topLeft.y + size)
         {
+          stroke(59, 71, 72);
+          noFill();
+          rect(topLeft.x - size / 2, topLeft.y + size / 2, size / 2.5, size / 2.5);
           tempLine += .1;
         }
       }

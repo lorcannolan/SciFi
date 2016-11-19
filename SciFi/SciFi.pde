@@ -6,13 +6,13 @@ Menu menu;
 PFont font;
 void setup()
 {
-  //fullScreen();
-  size(1000, 700);
+  fullScreen();
+  //size(1000, 700);
   font = createFont("AR DESTINE", 60);
   textFont(font);
   oxygen = new oTwo(width - (width / 8), height - (height / 8),  width / 10, 14, random(95, 100), "o2 Level:");
   temperature = new Temp(width - (width / 8), height / 4,  width / 10, color(255, 0, 0), color(0, 0, 255));
-  fuelLevel = random(75, 100);
+  fuelLevel = random(0, 33);
   fuel = new Fuel(width / 3 - (width / 10) / 2, height / 2, (width / 10) * 3, (width / 10) / 2);
   bottomLineY1 = height - (height / 5);
   bottomLineY2 = height - (height / 4);
@@ -42,9 +42,10 @@ void draw()
   oxygen.outerRedArc();
   oxygen.decrease();
   temperature.tempValue();
+  fuel.decrease();
+  fuel.value();
   menu.options();
   menu.hover();
-  fuel.decrease();
   if (chosenMenu == 3)
   {
       oxygenStatus = new oTwo(width / 3, height / 8,  width / 10, 14, oxygen.decrease(), "o2 Level:");
@@ -54,8 +55,8 @@ void draw()
       temperature.display();
       temperature.increase();
       temperature.decrease();
-      fuel.display();      
-      fuel.decrease();
+      fuel.display();
+      fuel.increase();
   }
 }
 
