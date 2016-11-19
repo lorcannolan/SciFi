@@ -85,6 +85,6 @@ class Temp
     textSize(size / 2);
     fill(255);
     float degreesCel = map(tempLine, topLeft.y, topLeft.y + size, 24, 20);
-    text(nf(degreesCel, 0, 1) + "\u00b0" + "C", width - (width / 8) * 3, height - (height / 8));
+    text(nf(degreesCel, 0, 1) + "\u00b0" + "C", width - (width / 8) * 3, height - (height / 10));
   }
 }

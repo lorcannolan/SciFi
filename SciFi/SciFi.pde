@@ -1,9 +1,9 @@
-oTwo oxygen, oxygenHome;
+oTwo oxygen, oxygenStatus;
 Temp temperature;
+Fuel fuel;
 Menu menu;
 //BackG back;
 PFont font;
-
 void setup()
 {
   //fullScreen();
@@ -12,6 +12,8 @@ void setup()
   textFont(font);
   oxygen = new oTwo(width - (width / 8), height - (height / 8),  width / 10, 14, random(95, 100), "o2 Level:");
   temperature = new Temp(width - (width / 8), height / 4,  width / 10, color(255, 0, 0), color(0, 0, 255));
+  fuelLevel = random(75, 100);
+  fuel = new Fuel(width / 3 - (width / 10) / 2, height / 2, (width / 10) * 3, (width / 10) / 2);
   bottomLineY1 = height - (height / 5);
   bottomLineY2 = height - (height / 4);
   bottomLineX1 = width - (width / 25);
@@ -28,6 +30,7 @@ float bottomLineY1, bottomLineY2, bottomLineX1, bottomLineX2, gap;
 color col1, col2;
 int chosenMenu = 1;
 float tempLine;
+float fuelLevel;
 
 void draw()
 {
@@ -41,15 +44,18 @@ void draw()
   temperature.tempValue();
   menu.options();
   menu.hover();
+  fuel.decrease();
   if (chosenMenu == 3)
   {
-      oxygenHome = new oTwo(width / 3, height / 8,  width / 10, 14, oxygen.decrease(), "o2 Level:");
-      oxygenHome.circle();
-      oxygenHome.outerBlueArc();
-      oxygenHome.outerRedArc();
+      oxygenStatus = new oTwo(width / 3, height / 8,  width / 10, 14, oxygen.decrease(), "o2 Level:");
+      oxygenStatus.circle();
+      oxygenStatus.outerBlueArc();
+      oxygenStatus.outerRedArc();
       temperature.display();
       temperature.increase();
       temperature.decrease();
+      fuel.display();      
+      fuel.decrease();
   }
 }
 
