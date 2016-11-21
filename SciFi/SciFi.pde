@@ -2,6 +2,7 @@ oTwo oxygen;
 Temp temperature;
 Fuel fuel;
 Menu menu;
+Crew astronauts;
 //BackG back;
 PFont font;
 void setup()
@@ -54,6 +55,7 @@ void draw()
       oxygen.circle();
       oxygen.outerBlueArc();
       oxygen.outerRedArc();
+      oxygen.increase();
       temperature.display();
       temperature.increase();
       temperature.decrease();

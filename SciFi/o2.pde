@@ -72,4 +72,35 @@ class oTwo
     textSize(size / 2);
     text(nf(oxygenLevel, 0, 1) + "%", width - (width / 8), height - (height / 10));
   }
+  
+  void increase()
+  {
+    stroke(255);
+    strokeWeight(2);
+    noFill();
+    rect(centre.x + (size / 1.75), centre.y - (size / 8), size / 1.5, size / 3);
+    textAlign(CENTER, CENTER);
+    textSize(size / 4);
+    fill(255);
+    text("Fill", centre.x + size / 1.75 + ((size / 1.5) / 2), centre.y - size / 8 + ((size / 3) / 2.5));
+    
+    if (mouseX >= centre.x + (size / 1.75) && mouseX <= centre.x + (size / 1.75) + size / 1.5
+        && mouseY >= centre.y - (size / 8) && mouseY <= centre.y - (size / 8) + size / 3)
+    {
+      fill(255, 230);
+      rect(centre.x + (size / 1.75), centre.y - (size / 8), size / 1.5, size / 3);
+      fill(59, 71, 72);
+      text("Fill", centre.x + size / 1.75 + ((size / 1.5) / 2), centre.y - size / 8 + ((size / 3) / 2.5));
+      if (mousePressed)
+      {
+        stroke(59, 71, 72);
+        noFill();
+        rect(centre.x + (size / 1.75), centre.y - (size / 8), size / 1.5, size / 3);
+        while (oxygenLevel < 100)
+        {
+          oxygenLevel += .01;
+        }
+      }
+    }
+  }
 }
