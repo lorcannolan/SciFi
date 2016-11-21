@@ -1,4 +1,4 @@
-oTwo oxygen, oxygenStatus;
+oTwo oxygen;
 Temp temperature;
 Fuel fuel;
 Menu menu;
@@ -6,13 +6,17 @@ Menu menu;
 PFont font;
 void setup()
 {
-  fullScreen();
-  //size(1000, 700);
+  //fullScreen();
+  size(1000, 700);
   font = createFont("AR DESTINE", 60);
   textFont(font);
-  oxygen = new oTwo(width - (width / 8), height - (height / 8),  width / 10, 14, random(95, 100), "o2 Level:");
+  emergencyOx = 14;
+  oxStartAngle = (emergencyOx / 100) * 360;
+  oxygenLevel = random(90, 100);
+  oxFinishAngle = (oxygenLevel / 100) * 360;
+  oxygen = new oTwo(width / 3, height / 8,  width / 10, "o2 Level:");
   temperature = new Temp(width - (width / 8), height / 4,  width / 10, color(255, 0, 0), color(0, 0, 255));
-  fuelLevel = random(0, 33);
+  fuelLevel = random(75, 100);
   fuel = new Fuel(width / 3 - (width / 10) / 2, height / 2, (width / 10) * 3, (width / 10) / 2);
   bottomLineY1 = height - (height / 5);
   bottomLineY2 = height - (height / 4);
@@ -29,6 +33,7 @@ void setup()
 float bottomLineY1, bottomLineY2, bottomLineX1, bottomLineX2, gap;
 color col1, col2;
 int chosenMenu = 1;
+float oxygenLevel, emergencyOx, oxStartAngle, oxFinishAngle;
 float tempLine;
 float fuelLevel;
 
@@ -37,9 +42,7 @@ void draw()
   background(59, 71, 72);
   //back.gradient();
   drawLines();
-  oxygen.circle();
-  oxygen.outerBlueArc();
-  oxygen.outerRedArc();
+  oxygen.value();
   oxygen.decrease();
   temperature.tempValue();
   fuel.decrease();
@@ -48,15 +51,18 @@ void draw()
   menu.hover();
   if (chosenMenu == 3)
   {
-      oxygenStatus = new oTwo(width / 3, height / 8,  width / 10, 14, oxygen.decrease(), "o2 Level:");
-      oxygenStatus.circle();
-      oxygenStatus.outerBlueArc();
-      oxygenStatus.outerRedArc();
+      oxygen.circle();
+      oxygen.outerBlueArc();
+      oxygen.outerRedArc();
       temperature.display();
       temperature.increase();
       temperature.decrease();
       fuel.display();
       fuel.increase();
+  }
+  if (chosenMenu == 4)
+  {
+    exit();
   }
 }
 

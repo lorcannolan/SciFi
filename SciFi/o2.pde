@@ -2,20 +2,12 @@ class oTwo
 {
   PVector centre;
   float size;
-  float startAngle;
-  float oxygenLevel;
-  float emergencyOxygen;
-  float finishAngle;
   String oxLevel;
   
-  oTwo(float x, float y, float size, float emergencyOxygen, float oxygenLevel, String oxLevel)
+  oTwo(float x, float y, float size, String oxLevel)
   {
     centre = new PVector(x, y);
     this.size = size;
-    this.emergencyOxygen = emergencyOxygen;
-    startAngle = (emergencyOxygen / 100) * 360;
-    this.oxygenLevel = oxygenLevel;
-    finishAngle = (oxygenLevel / 100) * 360;
     this.oxLevel = oxLevel;
   }
   
@@ -38,7 +30,7 @@ class oTwo
     stroke(36, 231, 255);
     strokeWeight(7);
     noFill();
-    arc(centre.x, centre.y, size, size, -HALF_PI + radians(startAngle), radians(finishAngle) - HALF_PI);
+    arc(centre.x, centre.y, size, size, -HALF_PI + radians(oxStartAngle), radians(oxFinishAngle) - HALF_PI);
   }
   
   void outerRedArc()
@@ -46,24 +38,38 @@ class oTwo
     stroke(250, 48, 38);
     strokeWeight(7);
     noFill();
-    arc(centre.x, centre.y, size, size, -HALF_PI, -HALF_PI + radians(startAngle));
+    arc(centre.x, centre.y, size, size, -HALF_PI, -HALF_PI + radians(oxStartAngle));
   }
   
-  float decrease()
+  void decrease()
   {
     if (frameCount % 100 == 0)
     {
-        if (oxygenLevel >= emergencyOxygen)
+        if (oxygenLevel >= emergencyOx)
         {
           oxygenLevel = oxygenLevel - .05;
-          finishAngle = (oxygenLevel / 100) * 360;
+          oxFinishAngle = (oxygenLevel / 100) * 360;
         }
-        else if (oxygenLevel <= emergencyOxygen && emergencyOxygen > 0)
+        else if (oxygenLevel <= emergencyOx && emergencyOx > 0)
         {
-          emergencyOxygen = emergencyOxygen - .05;
-          startAngle = (emergencyOxygen / 100) * 360;
+          emergencyOx = emergencyOx - .05;
+          oxStartAngle = (emergencyOx / 100) * 360;
         }
     }
-    return oxygenLevel;
+  }
+  
+  void value()
+  {
+    if (oxygenLevel > emergencyOx)
+    {
+      fill(36, 231, 255);
+    }
+    else if (oxygenLevel <= emergencyOx)
+    {
+      fill(250, 48, 38);
+    }
+    textAlign(CENTER);
+    textSize(size / 2);
+    text(nf(oxygenLevel, 0, 1) + "%", width - (width / 8), height - (height / 10));
   }
 }

@@ -20,7 +20,7 @@ class Menu
     text("Home", menuWidth / 2, (menuHeight / 4) - menuTop);
     text("Crew", menuWidth / 2, 2 * (menuHeight / 4) - menuTop);
     text("Status", menuWidth / 2, 3 * (menuHeight / 4) - menuTop);
-    text("More Info", menuWidth / 2, menuHeight - menuTop);
+    text("Log Out", menuWidth / 2, menuHeight - menuTop);
   }
   
   int hover()
@@ -75,7 +75,7 @@ class Menu
       textAlign(CENTER, CENTER);
       fill(59, 71, 72);
       textSize(menuTop);
-      text("More Info", menuWidth / 2, menuHeight - menuTop);
+      text("Log Out", menuWidth / 2, menuHeight - menuTop);
       if (mousePressed == true)
       {
         chosenMenu = 4;

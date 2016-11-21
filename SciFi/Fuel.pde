@@ -57,7 +57,10 @@ class Fuel
         stroke(59, 71, 72);
         noFill();
         rect(tlPos.x + w / 3, (tlPos.y + h) + h / 10, w / 3, h / 1.25);
-        fuelLevel = 100;
+        while (fuelLevel < 100)
+        {
+          fuelLevel += .01;
+        }
       }
     }
   }
