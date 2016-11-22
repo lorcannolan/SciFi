@@ -89,8 +89,10 @@ class Temp
   {
     textAlign(CENTER);
     textSize(size / 2);
-    fill(255);
     float degreesCel = map(tempLine, topLeft.y, topLeft.y + size, 24, 20);
+    float x = map(degreesCel, 24, 20, 0, 1);
+    color c = lerpColor(c1, c2, x);
+    fill(c);
     text(nf(degreesCel, 0, 1) + "\u00b0" + "C", width - (width / 8) * 3, height - (height / 10));
   }
 }
