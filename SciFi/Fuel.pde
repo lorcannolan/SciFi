@@ -68,6 +68,9 @@ class Fuel
   void value()
   {
     textAlign(CENTER);
+    fill(255);
+    textSize((width / 10) / 4);
+    text("Feul Level:", width - (width / 8) * 5, height - (height / 7));
     textSize((width / 10) / 2);
     if (fuelLevel > 66)
     {
@@ -82,6 +85,6 @@ class Fuel
       fuelCol = color(250, 48, 38);
     }
     fill(fuelCol);
-    text(nf(fuelLevel, 0, 1) + "%", width - (width / 8) * 5, height - (height / 10));
+    text(nf(fuelLevel, 0, 1) + "%", width - (width / 8) * 5, height - (height / 20));
   }
 }

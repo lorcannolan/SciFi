@@ -19,7 +19,6 @@ void setup()
   williams = loadImage("SunitaWilliams.jpg");
   glover = loadImage("VJGlover.jpg");
   loadData();
-  printDetails();
   emergencyOx = 14;
   oxStartAngle = (emergencyOx / 100) * 360;
   oxygenLevel = random(90, 100);
@@ -44,11 +43,11 @@ void setup()
 
 float bottomLineY1, bottomLineY2, bottomLineX1, bottomLineX2, gap;
 color col1, col2;
-int chosenMenu = 1;
+int chosenMenu = 2;
 float oxygenLevel, emergencyOx, oxStartAngle, oxFinishAngle;
 float tempLine;
 float fuelLevel;
-float picWidth, picHeight;
+float picWidth, picHeight, chosenCrew;
 
 void draw()
 {
@@ -62,74 +61,134 @@ void draw()
   fuel.value();
   menu.options();
   menu.hover();
-  if (chosenMenu == 2)
+  if (chosenMenu == 2 && chosenCrew == 0)
   {
+    tint(100);
     image(cassidy, bottomLineX2 + (width - bottomLineX1), bottomLineY1 - bottomLineY2, picWidth, picHeight);
     if (mouseX >= bottomLineX2 + (width - bottomLineX1) && mouseY >= bottomLineY1 - bottomLineY2
         && mouseX <= bottomLineX2 + (width - bottomLineX1) + picWidth && mouseY <= bottomLineY1 - bottomLineY2 + picHeight)
     {
+      tint(255);
+      image(cassidy, bottomLineX2 + (width - bottomLineX1), bottomLineY1 - bottomLineY2, picWidth, picHeight);
       stroke(255);
       strokeWeight(2);
       noFill();
       rect(bottomLineX2 + (width - bottomLineX1) - 1, bottomLineY1 - bottomLineY2 - 1, picWidth + 1, picHeight + 1);
+      fill(255);
+      textAlign(LEFT);
+      textSize(picWidth / 10);
+      text("Name: " + (table.getString(0, "firstname")), bottomLineX2 + (width - bottomLineX1), (bottomLineY1 - bottomLineY2) * 1.5 + picHeight);
+      textAlign(LEFT);
+      text("Surname: " + (table.getString(0, "lastname")), bottomLineX2 + (width - bottomLineX1), (bottomLineY1 - bottomLineY2) * 2 + picHeight);
+      text("Age:", bottomLineX2 + (width - bottomLineX1), (bottomLineY1 - bottomLineY2) * 2.5 + picHeight);
+      textAlign(CENTER);
+      text((table.getString(0, "age")), bottomLineX2 + (width - bottomLineX1) + picWidth / 2, (bottomLineY1 - bottomLineY2) * 2.5 + picHeight);
       if (mousePressed)
       {
         stroke(59, 71, 72);
         strokeWeight(1);
         noFill();
         rect(bottomLineX2 + (width - bottomLineX1) - 1, bottomLineY1 - bottomLineY2 - 1, picWidth + 1, picHeight + 1);
+        chosenCrew = 1;
       }
     }
+    tint(100);
     image(rubins, (bottomLineX2 + (width - bottomLineX1)) + picWidth + 2, bottomLineY1 - bottomLineY2, picWidth, picHeight);
     if (mouseX >= (bottomLineX2 + (width - bottomLineX1)) + picWidth + 2 && mouseY >= bottomLineY1 - bottomLineY2
     && mouseX <= (bottomLineX2 + (width - bottomLineX1)) + picWidth + 2 + picWidth && mouseY <= bottomLineY1 - bottomLineY2 + picHeight)
     {
+      tint(255);
+      image(rubins, (bottomLineX2 + (width - bottomLineX1)) + picWidth + 2, bottomLineY1 - bottomLineY2, picWidth, picHeight);
       stroke(255);
       strokeWeight(2);
       noFill();
       rect((bottomLineX2 + (width - bottomLineX1)) + picWidth + 2 - 1, bottomLineY1 - bottomLineY2 - 1, picWidth + 1, picHeight + 1);
+      fill(255);
+      textAlign(LEFT);
+      textSize(picWidth / 10);
+      text("Name: " + (table.getString(1, "firstname")), bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 1.5 + picHeight);
+      textAlign(LEFT);
+      text("Surname: " + (table.getString(1, "lastname")), bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 2 + picHeight);
+      text("Age:", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 2.5 + picHeight);
+      textAlign(CENTER);
+      text((table.getString(1, "age")), bottomLineX2 + (width - bottomLineX1) + picWidth + 2 + picWidth / 2, (bottomLineY1 - bottomLineY2) * 2.5 + picHeight);
       if (mousePressed)
       {
         stroke(59, 71, 72);
         strokeWeight(1);
         noFill();
         rect((bottomLineX2 + (width - bottomLineX1)) + picWidth + 2 - 1, bottomLineY1 - bottomLineY2 - 1, picWidth + 1, picHeight + 1);
+        chosenCrew = 2;
       }
     }
+    tint(100);
     image(williams, (bottomLineX2 + (width - bottomLineX1)) + (picWidth * 2) + 4, bottomLineY1 - bottomLineY2, picWidth, picHeight);
     if (mouseX >= (bottomLineX2 + (width - bottomLineX1)) + (picWidth * 2) + 4 && mouseY >= bottomLineY1 - bottomLineY2
     && mouseX <= (bottomLineX2 + (width - bottomLineX1)) + (picWidth * 2) + 4 + picWidth && mouseY <= bottomLineY1 - bottomLineY2 + picHeight)
     {
+      tint(255);
+      image(williams, (bottomLineX2 + (width - bottomLineX1)) + (picWidth * 2) + 4, bottomLineY1 - bottomLineY2, picWidth, picHeight);
       stroke(255);
       strokeWeight(2);
       noFill();
       rect((bottomLineX2 + (width - bottomLineX1)) + (picWidth * 2) + 4 - 1, bottomLineY1 - bottomLineY2 - 1, picWidth + 1, picHeight + 1);
+      fill(255);
+      textAlign(LEFT);
+      textSize(picWidth / 10);
+      text("Name: " + (table.getString(3, "firstname")), bottomLineX2 + (width - bottomLineX1) + (picWidth * 2) + 4, (bottomLineY1 - bottomLineY2) * 1.5 + picHeight);
+      textAlign(LEFT);
+      text("Surname: " + (table.getString(3, "lastname")), bottomLineX2 + (width - bottomLineX1) + (picWidth * 2) + 4, (bottomLineY1 - bottomLineY2) * 2 + picHeight);
+      text("Age:", bottomLineX2 + (width - bottomLineX1) + (picWidth * 2) + 4, (bottomLineY1 - bottomLineY2) * 2.5 + picHeight);
+      textAlign(CENTER);
+      text((table.getString(3, "age")), bottomLineX2 + (width - bottomLineX1) + (picWidth * 2) + 4 + picWidth / 2, (bottomLineY1 - bottomLineY2) * 2.5 + picHeight);
       if (mousePressed)
       {
         stroke(59, 71, 72);
         strokeWeight(1);
         noFill();
         rect((bottomLineX2 + (width - bottomLineX1)) + (picWidth * 2) + 4 - 1, bottomLineY1 - bottomLineY2 - 1, picWidth + 1, picHeight + 1);
+        chosenCrew = 3;
       }
     }
+    tint(100);
     image(glover, (bottomLineX2 + (width - bottomLineX1)) + (picWidth * 3) + 6, bottomLineY1 - bottomLineY2, picWidth, picHeight);
     if (mouseX >= (bottomLineX2 + (width - bottomLineX1)) + (picWidth * 3) + 6 && mouseY >= bottomLineY1 - bottomLineY2
     && mouseX <= (bottomLineX2 + (width - bottomLineX1)) + (picWidth * 3) + 6 + picWidth && mouseY <= bottomLineY1 - bottomLineY2 + picHeight)
     {
+      tint(255);
+      image(glover, (bottomLineX2 + (width - bottomLineX1)) + (picWidth * 3) + 6, bottomLineY1 - bottomLineY2, picWidth, picHeight);
       stroke(255);
       strokeWeight(2);
       noFill();
       rect((bottomLineX2 + (width - bottomLineX1)) + (picWidth * 3) + 6 - 1, bottomLineY1 - bottomLineY2 - 1, picWidth + 1, picHeight + 1);
+      fill(255);
+      textAlign(LEFT);
+      textSize(picWidth / 10);
+      text("Name: " + (table.getString(2, "firstname")), bottomLineX2 + (width - bottomLineX1) + (picWidth * 3) + 6, (bottomLineY1 - bottomLineY2) * 1.5 + picHeight);
+      textAlign(LEFT);
+      text("Surname: " + (table.getString(2, "lastname")), bottomLineX2 + (width - bottomLineX1) + (picWidth * 3) + 6, (bottomLineY1 - bottomLineY2) * 2 + picHeight);
+      text("Age:", bottomLineX2 + (width - bottomLineX1) + (picWidth * 3) + 6, (bottomLineY1 - bottomLineY2) * 2.5 + picHeight);
+      textAlign(CENTER);
+      text((table.getString(2, "age")), bottomLineX2 + (width - bottomLineX1) + (picWidth * 3) + 6 + picWidth / 2, (bottomLineY1 - bottomLineY2) * 2.5 + picHeight);
       if (mousePressed)
       {
         stroke(59, 71, 72);
         strokeWeight(1);
         noFill();
         rect((bottomLineX2 + (width - bottomLineX1)) + (picWidth * 3) + 6 - 1, bottomLineY1 - bottomLineY2 - 1, picWidth + 1, picHeight + 1);
+        chosenCrew = 4;
       }
     }
   }
-  if (chosenMenu == 3)
+  else if (chosenMenu == 2 && chosenCrew == 1)
+  {
+    tint(255);
+    textAlign(LEFT);
+    textSize(height / 20);
+    image(cassidy, bottomLineX2 + (width - bottomLineX1), bottomLineY1 - bottomLineY2, picWidth, picHeight);
+    text("Name: " + (table.getString(0, "firstname")), bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2));
+  }
+  else if (chosenMenu == 3)
   {
     oxygen.circle();
     oxygen.outerBlueArc();
@@ -141,7 +200,7 @@ void draw()
     fuel.display();
     fuel.increase();
   }
-  if (chosenMenu == 4)
+  else if (chosenMenu == 4)
   {
     exit();
   }
@@ -189,13 +248,5 @@ void loadData()
   {
     Crew astronauts = new Crew(row);    
     info.add(astronauts);
-  }
-}
-
-void printDetails()
-{
-  for(Crew astronauts: info)
-  {
-    println(astronauts);
   }
 }

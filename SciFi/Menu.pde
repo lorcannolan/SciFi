@@ -51,6 +51,7 @@ class Menu
       if (mousePressed == true)
       {
         chosenMenu = 2;
+        chosenCrew = 0;
       }
     }
     if (mouseX >= 0 && mouseX <= menuWidth && mouseY >= menuTop + (menuHeight / 4) * 2 && mouseY <= menuTop + (menuHeight / 4) * 3)

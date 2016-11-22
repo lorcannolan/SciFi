@@ -60,6 +60,11 @@ class oTwo
   
   void value()
   {
+    fill(255);
+    textAlign(CENTER);
+    textSize(size / 4);
+    text(oxLevel, width - (width / 8), height - (height / 7));
+    textSize(size / 2);
     if (oxygenLevel > emergencyOx)
     {
       fill(36, 231, 255);
@@ -68,9 +73,7 @@ class oTwo
     {
       fill(250, 48, 38);
     }
-    textAlign(CENTER);
-    textSize(size / 2);
-    text(nf(oxygenLevel, 0, 1) + "%", width - (width / 8), height - (height / 10));
+    text(nf(oxygenLevel, 0, 1) + "%", width - (width / 8), height - (height / 20));
   }
   
   void increase()
