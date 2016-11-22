@@ -82,7 +82,7 @@ void draw()
       text("Surname: " + (table.getString(0, "lastname")), bottomLineX2 + (width - bottomLineX1), (bottomLineY1 - bottomLineY2) * 2 + picHeight);
       text("Age:", bottomLineX2 + (width - bottomLineX1), (bottomLineY1 - bottomLineY2) * 2.5 + picHeight);
       textAlign(CENTER);
-      text((table.getString(0, "age")), bottomLineX2 + (width - bottomLineX1) + picWidth / 2, (bottomLineY1 - bottomLineY2) * 2.5 + picHeight);
+      text((table.getInt(0, "age")), bottomLineX2 + (width - bottomLineX1) + picWidth / 2, (bottomLineY1 - bottomLineY2) * 2.5 + picHeight);
       if (mousePressed)
       {
         stroke(59, 71, 72);
@@ -111,7 +111,7 @@ void draw()
       text("Surname: " + (table.getString(1, "lastname")), bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 2 + picHeight);
       text("Age:", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 2.5 + picHeight);
       textAlign(CENTER);
-      text((table.getString(1, "age")), bottomLineX2 + (width - bottomLineX1) + picWidth + 2 + picWidth / 2, (bottomLineY1 - bottomLineY2) * 2.5 + picHeight);
+      text((table.getInt(1, "age")), bottomLineX2 + (width - bottomLineX1) + picWidth + 2 + picWidth / 2, (bottomLineY1 - bottomLineY2) * 2.5 + picHeight);
       if (mousePressed)
       {
         stroke(59, 71, 72);
@@ -140,7 +140,7 @@ void draw()
       text("Surname: " + (table.getString(3, "lastname")), bottomLineX2 + (width - bottomLineX1) + (picWidth * 2) + 4, (bottomLineY1 - bottomLineY2) * 2 + picHeight);
       text("Age:", bottomLineX2 + (width - bottomLineX1) + (picWidth * 2) + 4, (bottomLineY1 - bottomLineY2) * 2.5 + picHeight);
       textAlign(CENTER);
-      text((table.getString(3, "age")), bottomLineX2 + (width - bottomLineX1) + (picWidth * 2) + 4 + picWidth / 2, (bottomLineY1 - bottomLineY2) * 2.5 + picHeight);
+      text((table.getInt(3, "age")), bottomLineX2 + (width - bottomLineX1) + (picWidth * 2) + 4 + picWidth / 2, (bottomLineY1 - bottomLineY2) * 2.5 + picHeight);
       if (mousePressed)
       {
         stroke(59, 71, 72);
@@ -169,7 +169,7 @@ void draw()
       text("Surname: " + (table.getString(2, "lastname")), bottomLineX2 + (width - bottomLineX1) + (picWidth * 3) + 6, (bottomLineY1 - bottomLineY2) * 2 + picHeight);
       text("Age:", bottomLineX2 + (width - bottomLineX1) + (picWidth * 3) + 6, (bottomLineY1 - bottomLineY2) * 2.5 + picHeight);
       textAlign(CENTER);
-      text((table.getString(2, "age")), bottomLineX2 + (width - bottomLineX1) + (picWidth * 3) + 6 + picWidth / 2, (bottomLineY1 - bottomLineY2) * 2.5 + picHeight);
+      text((table.getInt(2, "age")), bottomLineX2 + (width - bottomLineX1) + (picWidth * 3) + 6 + picWidth / 2, (bottomLineY1 - bottomLineY2) * 2.5 + picHeight);
       if (mousePressed)
       {
         stroke(59, 71, 72);
@@ -183,10 +183,105 @@ void draw()
   else if (chosenMenu == 2 && chosenCrew == 1)
   {
     tint(255);
-    textAlign(LEFT);
-    textSize(height / 20);
+    textAlign(LEFT, TOP);
+    textSize(height / 34);
     image(cassidy, bottomLineX2 + (width - bottomLineX1), bottomLineY1 - bottomLineY2, picWidth, picHeight);
-    text("Name: " + (table.getString(0, "firstname")), bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2));
+    fill(255, 249, 57);
+    text("Firstame: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2));
+    text("Surname: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 2);
+    text("Age: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 3);
+    text("Born: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 4);
+    text("Height: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 5);
+    text("Weight: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 6);
+    text("Profession: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 7);
+    text("Bio: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 8);
+    for (int i = 0; i < table.getColumnCount(); i++)
+    {
+      fill(255);
+      text((table.getString(0, i)), bottomLineX2 + (width - bottomLineX1) + picWidth * 2, (bottomLineY1 - bottomLineY2) * (i + 1));
+    }
+    text("NASA astronaut and United States Navy SEAL. Chris Cassidy "
+         + "achieved the rank of Captain in the U.S. Navy and Chief "
+         + "of the Astronaut Office at NASA. This is his third voyage. "
+         + "Chris is the senior most crew member aboard this shuttle.", 
+          bottomLineX2 + (width - bottomLineX1) + picWidth * 2, (bottomLineY1 - bottomLineY2) * 8, picWidth * 2, picWidth);
+  }
+  else if (chosenMenu == 2 && chosenCrew == 2)
+  {
+    tint(255);
+    textAlign(LEFT, TOP);
+    textSize(height / 34);
+    image(rubins, bottomLineX2 + (width - bottomLineX1), bottomLineY1 - bottomLineY2, picWidth, picHeight);
+    fill(255, 249, 57);
+    text("Firstame: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2));
+    text("Surname: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 2);
+    text("Age: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 3);
+    text("Born: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 4);
+    text("Height: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 5);
+    text("Weight: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 6);
+    text("Profession: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 7);
+    text("Bio: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 8);
+    for (int i = 0; i < table.getColumnCount(); i++)
+    {
+      fill(255);
+      text((table.getString(1, i)), bottomLineX2 + (width - bottomLineX1) + picWidth * 2, (bottomLineY1 - bottomLineY2) * (i + 1));
+    }
+    text("Kathleen \"Kate\" Rubins became the 60th woman to fly in space "
+         + "and has spent 115d 02h 22m in space already prior to this mission. "
+         + "Kate is a vital member of this crew with her previous experience as "
+         + "a flight engineer.", 
+          bottomLineX2 + (width - bottomLineX1) + picWidth * 2, (bottomLineY1 - bottomLineY2) * 8, picWidth * 2, picWidth);
+  }
+  else if (chosenMenu == 2 && chosenCrew == 3)
+  {
+    tint(255);
+    textAlign(LEFT, TOP);
+    textSize(height / 35);
+    image(williams, bottomLineX2 + (width - bottomLineX1), bottomLineY1 - bottomLineY2, picWidth, picHeight);
+    fill(255, 249, 57);
+    text("Firstame: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2));
+    text("Surname: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 2);
+    text("Age: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 3);
+    text("Born: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 4);
+    text("Height: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 5);
+    text("Weight: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 6);
+    text("Profession: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 7);
+    text("Bio: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 8);
+    for (int i = 0; i < table.getColumnCount(); i++)
+    {
+      fill(255);
+      text((table.getString(3, i)), bottomLineX2 + (width - bottomLineX1) + picWidth * 2, (bottomLineY1 - bottomLineY2) * (i + 1));
+    }
+    text("Sunita \"Suni\" Williams holds the records for total spacewalks by "
+         + "a woman (7) and most spacewalk time by a woman (50 hours, 40 minutes). "
+         + "On board her final expidition, Suni currently holds the rank of Captain.", 
+          bottomLineX2 + (width - bottomLineX1) + picWidth * 2, (bottomLineY1 - bottomLineY2) * 8, picWidth * 2, picWidth);
+  }
+  else if (chosenMenu == 2 && chosenCrew == 4)
+  {
+    tint(255);
+    textAlign(LEFT, TOP);
+    textSize(height / 35);
+    image(glover, bottomLineX2 + (width - bottomLineX1), bottomLineY1 - bottomLineY2, picWidth, picHeight);
+    fill(255, 249, 57);
+    text("Firstame: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2));
+    text("Surname: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 2);
+    text("Age: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 3);
+    text("Born: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 4);
+    text("Height: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 5);
+    text("Weight: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 6);
+    text("Profession: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 7);
+    text("Bio: ", bottomLineX2 + (width - bottomLineX1) + picWidth + 2, (bottomLineY1 - bottomLineY2) * 8);
+    for (int i = 0; i < table.getColumnCount(); i++)
+    {
+      fill(255);
+      text((table.getString(2, i)), bottomLineX2 + (width - bottomLineX1) + picWidth * 2, (bottomLineY1 - bottomLineY2) * (i + 1));
+    }
+    text("Victor J. Glover, Jr. was selected as an astronaut in 2013. The California native "
+         + "holds a Bachelor of Science in General Engineering, a Master of Science in Flight "
+         + "Test Engineering, a Master of Science in Systems Engineering and a Master of "
+         + "Military Operational Art and Science.", 
+          bottomLineX2 + (width - bottomLineX1) + picWidth * 2, (bottomLineY1 - bottomLineY2) * 8, picWidth * 2, picWidth);
   }
   else if (chosenMenu == 3)
   {
