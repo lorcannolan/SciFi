@@ -9,12 +9,12 @@ ArrayList<Crew> info = new ArrayList<Crew>();
 PImage cassidy, rubins, williams, glover;
 void setup()
 {
-  //fullScreen();
-  size(1000, 700);
+  fullScreen();
+  //size(1000, 700);
   font = createFont("AR DESTINE", 60);
   textFont(font);
   table = loadTable("astronauts.tsv", "header");
-  cassidy = loadImage("CJCassidy_edit.jpg");
+  cassidy = loadImage("CJCassidy.jpg");
   rubins = loadImage("KathleenRubins.jpg");
   williams = loadImage("SunitaWilliams.jpg");
   glover = loadImage("VJGlover.jpg");
@@ -64,8 +64,70 @@ void draw()
   menu.hover();
   if (chosenMenu == 2)
   {
-    //rect(
     image(cassidy, bottomLineX2 + (width - bottomLineX1), bottomLineY1 - bottomLineY2, picWidth, picHeight);
+    if (mouseX >= bottomLineX2 + (width - bottomLineX1) && mouseY >= bottomLineY1 - bottomLineY2
+        && mouseX <= bottomLineX2 + (width - bottomLineX1) + picWidth && mouseY <= bottomLineY1 - bottomLineY2 + picHeight)
+    {
+      stroke(255);
+      strokeWeight(2);
+      noFill();
+      rect(bottomLineX2 + (width - bottomLineX1) - 1, bottomLineY1 - bottomLineY2 - 1, picWidth + 1, picHeight + 1);
+      if (mousePressed)
+      {
+        stroke(59, 71, 72);
+        strokeWeight(1);
+        noFill();
+        rect(bottomLineX2 + (width - bottomLineX1) - 1, bottomLineY1 - bottomLineY2 - 1, picWidth + 1, picHeight + 1);
+      }
+    }
+    image(rubins, (bottomLineX2 + (width - bottomLineX1)) + picWidth + 2, bottomLineY1 - bottomLineY2, picWidth, picHeight);
+    if (mouseX >= (bottomLineX2 + (width - bottomLineX1)) + picWidth + 2 && mouseY >= bottomLineY1 - bottomLineY2
+    && mouseX <= (bottomLineX2 + (width - bottomLineX1)) + picWidth + 2 + picWidth && mouseY <= bottomLineY1 - bottomLineY2 + picHeight)
+    {
+      stroke(255);
+      strokeWeight(2);
+      noFill();
+      rect((bottomLineX2 + (width - bottomLineX1)) + picWidth + 2 - 1, bottomLineY1 - bottomLineY2 - 1, picWidth + 1, picHeight + 1);
+      if (mousePressed)
+      {
+        stroke(59, 71, 72);
+        strokeWeight(1);
+        noFill();
+        rect((bottomLineX2 + (width - bottomLineX1)) + picWidth + 2 - 1, bottomLineY1 - bottomLineY2 - 1, picWidth + 1, picHeight + 1);
+      }
+    }
+    image(williams, (bottomLineX2 + (width - bottomLineX1)) + (picWidth * 2) + 4, bottomLineY1 - bottomLineY2, picWidth, picHeight);
+    if (mouseX >= (bottomLineX2 + (width - bottomLineX1)) + (picWidth * 2) + 4 && mouseY >= bottomLineY1 - bottomLineY2
+    && mouseX <= (bottomLineX2 + (width - bottomLineX1)) + (picWidth * 2) + 4 + picWidth && mouseY <= bottomLineY1 - bottomLineY2 + picHeight)
+    {
+      stroke(255);
+      strokeWeight(2);
+      noFill();
+      rect((bottomLineX2 + (width - bottomLineX1)) + (picWidth * 2) + 4 - 1, bottomLineY1 - bottomLineY2 - 1, picWidth + 1, picHeight + 1);
+      if (mousePressed)
+      {
+        stroke(59, 71, 72);
+        strokeWeight(1);
+        noFill();
+        rect((bottomLineX2 + (width - bottomLineX1)) + (picWidth * 2) + 4 - 1, bottomLineY1 - bottomLineY2 - 1, picWidth + 1, picHeight + 1);
+      }
+    }
+    image(glover, (bottomLineX2 + (width - bottomLineX1)) + (picWidth * 3) + 6, bottomLineY1 - bottomLineY2, picWidth, picHeight);
+    if (mouseX >= (bottomLineX2 + (width - bottomLineX1)) + (picWidth * 3) + 6 && mouseY >= bottomLineY1 - bottomLineY2
+    && mouseX <= (bottomLineX2 + (width - bottomLineX1)) + (picWidth * 3) + 6 + picWidth && mouseY <= bottomLineY1 - bottomLineY2 + picHeight)
+    {
+      stroke(255);
+      strokeWeight(2);
+      noFill();
+      rect((bottomLineX2 + (width - bottomLineX1)) + (picWidth * 3) + 6 - 1, bottomLineY1 - bottomLineY2 - 1, picWidth + 1, picHeight + 1);
+      if (mousePressed)
+      {
+        stroke(59, 71, 72);
+        strokeWeight(1);
+        noFill();
+        rect((bottomLineX2 + (width - bottomLineX1)) + (picWidth * 3) + 6 - 1, bottomLineY1 - bottomLineY2 - 1, picWidth + 1, picHeight + 1);
+      }
+    }
   }
   if (chosenMenu == 3)
   {
