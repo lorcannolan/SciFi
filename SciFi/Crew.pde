@@ -18,4 +18,9 @@ class Crew
     weight = row.getInt("weight");
     profession = row.getString("profession");
   }
+  
+  String toString()
+  {
+    return firstName + "\t" + surname + "\t" + age + "\t" + birthplace + "\t" + tall + "\t" + weight + "\t" + profession;
+  }
 }

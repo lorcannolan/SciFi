@@ -2,15 +2,24 @@ oTwo oxygen;
 Temp temperature;
 Fuel fuel;
 Menu menu;
-Crew astronauts;
 //BackG back;
 PFont font;
+Table table;
+ArrayList<Crew> info = new ArrayList<Crew>();
+PImage cassidy, rubins, williams, glover;
 void setup()
 {
   //fullScreen();
   size(1000, 700);
   font = createFont("AR DESTINE", 60);
   textFont(font);
+  table = loadTable("astronauts.tsv", "header");
+  cassidy = loadImage("CJCassidy_edit.jpg");
+  rubins = loadImage("KathleenRubins.jpg");
+  williams = loadImage("SunitaWilliams.jpg");
+  glover = loadImage("VJGlover.jpg");
+  loadData();
+  printDetails();
   emergencyOx = 14;
   oxStartAngle = (emergencyOx / 100) * 360;
   oxygenLevel = random(90, 100);
@@ -29,6 +38,8 @@ void setup()
   menu = new Menu(bottomLineY1 - bottomLineY2, bottomLineX2 - gap, ((bottomLineY2 - (bottomLineY1 - bottomLineY2)) - (bottomLineY1 - bottomLineY2)));
   //back = new BackG(0, 0, width, height, col1, col2);
   tempLine = height / 4 + (width / 10) / 2;
+  picWidth = width / 6.2;
+  picHeight = height / 1.92;
 }
 
 float bottomLineY1, bottomLineY2, bottomLineX1, bottomLineX2, gap;
@@ -37,6 +48,7 @@ int chosenMenu = 1;
 float oxygenLevel, emergencyOx, oxStartAngle, oxFinishAngle;
 float tempLine;
 float fuelLevel;
+float picWidth, picHeight;
 
 void draw()
 {
@@ -50,17 +62,22 @@ void draw()
   fuel.value();
   menu.options();
   menu.hover();
+  if (chosenMenu == 2)
+  {
+    //rect(
+    image(cassidy, bottomLineX2 + (width - bottomLineX1), bottomLineY1 - bottomLineY2, picWidth, picHeight);
+  }
   if (chosenMenu == 3)
   {
-      oxygen.circle();
-      oxygen.outerBlueArc();
-      oxygen.outerRedArc();
-      oxygen.increase();
-      temperature.display();
-      temperature.increase();
-      temperature.decrease();
-      fuel.display();
-      fuel.increase();
+    oxygen.circle();
+    oxygen.outerBlueArc();
+    oxygen.outerRedArc();
+    oxygen.increase();
+    temperature.display();
+    temperature.increase();
+    temperature.decrease();
+    fuel.display();
+    fuel.increase();
   }
   if (chosenMenu == 4)
   {
@@ -101,4 +118,22 @@ void drawLines()
   line(bottomLineX2 + gap, bottomLineY2 - (bottomLineY1 - bottomLineY2), bottomLineX2 + (width - bottomLineX1), bottomLineY2 - gap);
   line(bottomLineX2 + (width - bottomLineX1), bottomLineY2 - gap, bottomLineX1, bottomLineY2 - gap);
   line(bottomLineX1, bottomLineY2 - gap, width, bottomLineY2 - (bottomLineY1 - bottomLineY2));
+}
+
+void loadData()
+{
+  Table table = loadTable("astronauts.tsv", "header");
+  for(TableRow row:table.rows())
+  {
+    Crew astronauts = new Crew(row);    
+    info.add(astronauts);
+  }
+}
+
+void printDetails()
+{
+  for(Crew astronauts: info)
+  {
+    println(astronauts);
+  }
 }
