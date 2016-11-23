@@ -43,16 +43,16 @@ class oTwo
   
   void decrease()
   {
-    if (frameCount % 100 == 0)
+    if (frameCount % 90 == 0)
     {
         if (oxygenLevel >= emergencyOx)
         {
-          oxygenLevel = oxygenLevel - .05;
+          oxygenLevel = oxygenLevel - .1;
           oxFinishAngle = (oxygenLevel / 100) * 360;
         }
         else if (oxygenLevel <= emergencyOx && emergencyOx > 0)
         {
-          emergencyOx = emergencyOx - .05;
+          emergencyOx = emergencyOx - .1;
           oxStartAngle = (emergencyOx / 100) * 360;
         }
     }
@@ -69,7 +69,7 @@ class oTwo
     {
       fill(36, 231, 255);
     }
-    else if (oxygenLevel <= emergencyOx)
+    else if (oxygenLevel < emergencyOx)
     {
       fill(250, 48, 38);
     }

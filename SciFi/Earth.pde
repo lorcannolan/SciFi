@@ -22,7 +22,6 @@ class Earth
      shape.stroke(255);
      shape.strokeWeight(2);
      shape.fill(0);
-     println("Co-ordinates:");
      shape.vertex(topLeft.x + w / 6, topLeft.y);
      shape.vertex(topLeft.x, topLeft.y + h / 6);
      shape.vertex(topLeft.x, topLeft.y + (h - h / 6));
@@ -38,6 +37,6 @@ class Earth
   {
     shape(shape, 0, 0);
     tint(255);
-    image(myAnimation, topLeft.x + w / 24, topLeft.y + h / 24);
+    image(myAnimation, topLeft.x + w / 24, topLeft.y + h / 24, earthWidth, earthHeight);
   }
 }

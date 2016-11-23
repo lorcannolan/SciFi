@@ -8,7 +8,6 @@ Earth earth;
 //BackG back;
 PFont font;
 Table table;
-ArrayList<Crew> info = new ArrayList<Crew>();
 PImage cassidy, rubins, williams, glover;
 void setup()
 {
@@ -44,7 +43,10 @@ void setup()
   tempLine = height / 4 + (width / 10) / 2;
   picWidth = width / 6.2;
   picHeight = height / 1.92;
-  earth = new Earth(bottomLineX2 + (width - bottomLineX1) + picWidth * 2.65, bottomLineY1 - bottomLineY2, picWidth * 1.5, picHeight / 1.25);
+  earthWidth = width / 4.5;
+  earthHeight = height / 2.6;
+  earth = new Earth(bottomLineX2 + (width - bottomLineX1) + picWidth * 2.65, bottomLineY1 - bottomLineY2 + picHeight / 2.5, picWidth * 1.5, picHeight / 1.25);
+  startingTime = millis() - (int)random(1500000000, 2000000000);
 }
 
 float bottomLineY1, bottomLineY2, bottomLineX1, bottomLineX2, gap;
@@ -54,6 +56,9 @@ float oxygenLevel, emergencyOx, oxStartAngle, oxFinishAngle;
 float tempLine;
 float fuelLevel;
 float picWidth, picHeight, chosenCrew;
+float earthWidth, earthHeight;
+int startingTime, seconds, minutes, hours, days;
+String countdown;
 
 void draw()
 {
@@ -69,6 +74,16 @@ void draw()
   menu.hover();
   if (chosenMenu == 1)
   {
+    textAlign(CENTER);
+    textSize(picWidth / 4);
+    fill(255, 249, 57);
+    text("Aether II Mars Mission", (bottomLineX2 + (width - bottomLineX1)) + (picWidth * 2) + 4, bottomLineY1 - bottomLineY2);
+    fill(255);
+    textAlign(LEFT);
+    textSize(picWidth / 6);
+    text("Time to Destination:", bottomLineX2 + (width - bottomLineX1), (bottomLineY1 - bottomLineY2) * 3);
+    timer();
+    text(countdown, (bottomLineX2 + (width - bottomLineX1)) + (picWidth * 2), (bottomLineY1 - bottomLineY2) * 3);
     earth.display();
   }
   else if (chosenMenu == 2 && chosenCrew == 0)
@@ -349,9 +364,16 @@ void drawLines()
 void loadData()
 {
   Table table = loadTable("astronauts.tsv", "header");
-  for(TableRow row:table.rows())
-  {
-    Crew astronauts = new Crew(row);    
-    info.add(astronauts);
-  }
+}
+
+void timer()
+{
+  seconds = (-millis() - startingTime) / 1000;
+  minutes = seconds / 60;
+  hours = minutes / 60;
+  days = hours / 24;
+  seconds -= minutes * 60;
+  minutes -= hours * 60;
+  hours -= days * 24;
+  countdown = days + "d " + hours + "h " + minutes + "m " + seconds + "s.";
 }
