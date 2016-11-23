@@ -1,7 +1,10 @@
+import gifAnimation.*;
+Gif myAnimation;
 oTwo oxygen;
 Temp temperature;
 Fuel fuel;
 Menu menu;
+Earth earth;
 //BackG back;
 PFont font;
 Table table;
@@ -11,6 +14,8 @@ void setup()
 {
   fullScreen();
   //size(1000, 700);
+  myAnimation = new Gif(this, "earth.gif");
+  myAnimation.play();
   font = createFont("AR DESTINE", 60);
   textFont(font);
   table = loadTable("astronauts.tsv", "header");
@@ -39,11 +44,12 @@ void setup()
   tempLine = height / 4 + (width / 10) / 2;
   picWidth = width / 6.2;
   picHeight = height / 1.92;
+  earth = new Earth(bottomLineX2 + (width - bottomLineX1) + picWidth * 2.65, bottomLineY1 - bottomLineY2, picWidth * 1.5, picHeight / 1.25);
 }
 
 float bottomLineY1, bottomLineY2, bottomLineX1, bottomLineX2, gap;
 color col1, col2;
-int chosenMenu = 2;
+int chosenMenu = 1;
 float oxygenLevel, emergencyOx, oxStartAngle, oxFinishAngle;
 float tempLine;
 float fuelLevel;
@@ -61,7 +67,11 @@ void draw()
   fuel.value();
   menu.options();
   menu.hover();
-  if (chosenMenu == 2 && chosenCrew == 0)
+  if (chosenMenu == 1)
+  {
+    earth.display();
+  }
+  else if (chosenMenu == 2 && chosenCrew == 0)
   {
     tint(100);
     image(cassidy, bottomLineX2 + (width - bottomLineX1), bottomLineY1 - bottomLineY2, picWidth, picHeight);
