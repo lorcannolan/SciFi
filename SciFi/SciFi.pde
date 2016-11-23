@@ -45,8 +45,12 @@ void setup()
   picHeight = height / 1.92;
   earthWidth = width / 4.5;
   earthHeight = height / 2.6;
-  earth = new Earth(bottomLineX2 + (width - bottomLineX1) + picWidth * 2.65, bottomLineY1 - bottomLineY2 + picHeight / 2.5, picWidth * 1.5, picHeight / 1.25);
+  earth = new Earth(bottomLineX2 + (width - bottomLineX1) + picWidth * 2.75, bottomLineY1 - bottomLineY2 + picHeight / 2.5, picWidth * 1.5, picHeight / 1.25);
   startingTime = millis() - (int)random(1500000000, 2000000000);
+  distRemaining = (int)random(6000000, 7000000);
+  println(distRemaining);
+  speed = 14400;
+  maintCall = 0;
 }
 
 float bottomLineY1, bottomLineY2, bottomLineX1, bottomLineX2, gap;
@@ -59,6 +63,12 @@ float picWidth, picHeight, chosenCrew;
 float earthWidth, earthHeight;
 int startingTime, seconds, minutes, hours, days;
 String countdown;
+int distRemaining;
+long distTravelled;
+int speed;
+color generate, c1, c2, c3, c4;
+String status, status1, status2, status3, status4;
+int maintCall;
 
 void draw()
 {
@@ -72,19 +82,75 @@ void draw()
   fuel.value();
   menu.options();
   menu.hover();
+  if (frameCount % 10 == 0)
+  {
+    distRemaining--;
+  }
+  distTravelled = 56000000 - distRemaining;
   if (chosenMenu == 1)
   {
     textAlign(CENTER);
     textSize(picWidth / 4);
+    fill(255, 132, 0);
+    text("Ares II Mars Mission", (bottomLineX2 + (width - bottomLineX1)) + (picWidth * 2) + 4, bottomLineY1 - bottomLineY2 + 5);
     fill(255, 249, 57);
-    text("Aether II Mars Mission", (bottomLineX2 + (width - bottomLineX1)) + (picWidth * 2) + 4, bottomLineY1 - bottomLineY2);
-    fill(255);
     textAlign(LEFT);
-    textSize(picWidth / 6);
+    textSize(picWidth / 8);
     text("Time to Destination:", bottomLineX2 + (width - bottomLineX1), (bottomLineY1 - bottomLineY2) * 3);
     timer();
-    text(countdown, (bottomLineX2 + (width - bottomLineX1)) + (picWidth * 2), (bottomLineY1 - bottomLineY2) * 3);
+    text("Mission Phase:", bottomLineX2 + (width - bottomLineX1), (bottomLineY1 - bottomLineY2) * 4.5);
+    text("Distance Travelled:", bottomLineX2 + (width - bottomLineX1), (bottomLineY1 - bottomLineY2) * 6);
+    text("Distance To Destination:", bottomLineX2 + (width - bottomLineX1), (bottomLineY1 - bottomLineY2) * 6.75, picWidth, picWidth / 2);
+    text("Speed:", bottomLineX2 + (width - bottomLineX1), (bottomLineY1 - bottomLineY2) * 9.75);
+    text("Maintenance:", bottomLineX2 + (width - bottomLineX1), (bottomLineY1 - bottomLineY2) * 11);
+    fill(255);
+    text(countdown, bottomLineX2 + (width - bottomLineX1) + (picWidth * 1.5), (bottomLineY1 - bottomLineY2) * 3);
+    text("Return Trip", bottomLineX2 + (width - bottomLineX1) + (picWidth * 1.5), (bottomLineY1 - bottomLineY2) * 4.5);
+    text(distTravelled + " km", bottomLineX2 + (width - bottomLineX1) + (picWidth * 1.5), (bottomLineY1 - bottomLineY2) * 6);
+    text(distRemaining + " km", bottomLineX2 + (width - bottomLineX1) + (picWidth * 1.5), (bottomLineY1 - bottomLineY2) * 8);
+    text(speed + " km/h", bottomLineX2 + (width - bottomLineX1) + (picWidth * 1.5), (bottomLineY1 - bottomLineY2) * 10);
+    text("Waste & Hegiene:", bottomLineX2 + (width - bottomLineX1), (bottomLineY1 - bottomLineY2) * 12);
+    text("Fire Safety:", bottomLineX2 + (width - bottomLineX1), (bottomLineY1 - bottomLineY2) * 12.75);
+    text("Air Con:", bottomLineX2 + (width - bottomLineX1), (bottomLineY1 - bottomLineY2) * 13.5);
+    text("Comms Systems:", bottomLineX2 + (width - bottomLineX1), (bottomLineY1 - bottomLineY2) * 14.25);
+    if (maintCall < 4)
+    {
+      status = maintenance();
+      status1 = status;
+      fill(generate);
+      c1 = generate;
+      text(status, bottomLineX2 + (width - bottomLineX1) + (picWidth * 1.5), (bottomLineY1 - bottomLineY2) * 12);
+      status = maintenance();
+      status2 = status;
+      fill(generate);
+      c2 = generate;
+      text(status, bottomLineX2 + (width - bottomLineX1) + (picWidth * 1.5), (bottomLineY1 - bottomLineY2) * 12.75);
+      status = maintenance();
+      status3 = status;
+      fill(generate);
+      c3 = generate;
+      text(status, bottomLineX2 + (width - bottomLineX1) + (picWidth * 1.5), (bottomLineY1 - bottomLineY2) * 13.5);
+      status = maintenance();
+      status4 = status;
+      fill(generate);
+      c4 = generate;
+      text(status, bottomLineX2 + (width - bottomLineX1) + (picWidth * 1.5), (bottomLineY1 - bottomLineY2) * 14.25);
+    }
+    fill(c1);
+    text(status1, bottomLineX2 + (width - bottomLineX1) + (picWidth * 1.5), (bottomLineY1 - bottomLineY2) * 12);
+    fill(c2);
+    text(status2, bottomLineX2 + (width - bottomLineX1) + (picWidth * 1.5), (bottomLineY1 - bottomLineY2) * 12.75);
+    fill(c3);
+    text(status3, bottomLineX2 + (width - bottomLineX1) + (picWidth * 1.5), (bottomLineY1 - bottomLineY2) * 13.5);
+    fill(c4);
+    text(status4, bottomLineX2 + (width - bottomLineX1) + (picWidth * 1.5), (bottomLineY1 - bottomLineY2) * 14.25);
+    textAlign(CENTER);
+    fill(255, 249, 57);
+    text("Time (GMT):", (bottomLineX2 + (width - bottomLineX1) + picWidth * 2.75) + (picWidth * 1.5) / 2, (bottomLineY1 - bottomLineY2) + picHeight / 4);
+    fill(255);
+    text(hour() + ":" + minute(), (bottomLineX2 + (width - bottomLineX1) + picWidth * 2.75) + (picWidth * 1.5) / 2, (bottomLineY1 - bottomLineY2) + picHeight / 2.75);
     earth.display();
+    
   }
   else if (chosenMenu == 2 && chosenCrew == 0)
   {
@@ -375,5 +441,25 @@ void timer()
   seconds -= minutes * 60;
   minutes -= hours * 60;
   hours -= days * 24;
-  countdown = days + "d " + hours + "h " + minutes + "m " + seconds + "s.";
+  countdown = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+}
+
+String maintenance()
+{
+  int i = (int)random(1, 3);
+  if (i == 1)
+  {
+    generate = color(255, 0, 0);
+    status = "Incomplete";
+  }
+  else
+  {
+    generate = color(0, 255, 0);
+    status = "Complete";
+  }
+  if (maintCall <= 3)
+  {
+    maintCall++;
+  }
+  return status;
 }
