@@ -98,4 +98,15 @@ class Temp
     fill(c);
     text(nf(degreesCel, 0, 1) + "\u00b0" + "C", width - (width / 8) * 3, height - (height / 20));
   }
+  
+  void description()
+  {
+    textAlign(LEFT);
+    textSize(size / 6);
+    fill(255);
+    text("For safety reasons the temperature can only be altered within a certain "
+         + "range. Press the (+) to increase and (-) to decrease the temperature. "
+         + "However, be sure to check with your fellow crew members before doing so."
+         , topLeft.x - size * 5.5, topLeft.y, size * 5, size);
+  }
 }

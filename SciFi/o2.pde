@@ -99,11 +99,37 @@ class oTwo
         stroke(59, 71, 72);
         noFill();
         rect(centre.x + (size / 1.75), centre.y - (size / 8), size / 1.5, size / 3);
-        while (oxygenLevel < 100)
+        oxygenLevel += 25;
+        if (oxygenLevel > 100)
         {
-          oxygenLevel += .01;
+          oxygenLevel = 100;
         }
       }
     }
+  }
+  
+  void warning()
+  {
+    if (oxygenLevel < 14)
+    {
+      stroke(255);
+      fill(230);
+      rect(centre.x, centre.y * 4, size * 5.5, size);
+      textAlign(CENTER);
+      textSize(size / 2.5);
+      fill(250, 48, 38);
+      text("Warning o2 Level Critical", centre.x + (size * 5.5) / 2, centre.y * 4 + size / 2);
+    }
+  }
+  
+  void description()
+  {
+    textAlign(LEFT);
+    textSize(size / 6);
+    fill(255);
+    text("The oxygen on this shuttle is pumped out from 4 sets of oxygen tanks. "
+         + "When one empties out, or the oxygen level is low press fill to refill "
+         + "one of the tanks."
+         , centre.x + size * 1.5, centre.y - size / 2, size * 4, size);
   }
 }

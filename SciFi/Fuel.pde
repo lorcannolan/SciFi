@@ -54,10 +54,14 @@ class Fuel
       text("Re-Fuel", tlPos.x + w / 2, ((tlPos.y + h) + h / 10) + h / 1.75);
       if (mousePressed)
       {
+        if (refill > 0)
+        {
+          refill -= 1;
+        }
         stroke(59, 71, 72);
         noFill();
         rect(tlPos.x + w / 3, (tlPos.y + h) + h / 10, w / 3, h / 1.25);
-        while (fuelLevel < 100)
+        while (fuelLevel < 100 && refill != 0)
         {
           fuelLevel += .01;
         }
@@ -86,5 +90,29 @@ class Fuel
     }
     fill(fuelCol);
     text(nf(fuelLevel, 0, 1) + "%", width - (width / 8) * 5, height - (height / 20));
+  }
+  
+  void warning()
+  {
+    if (fuelLevel < 15)
+    {
+      stroke(255);
+      fill(230);
+      rect(tlPos.x + w / 6, tlPos.y / 2, w * 2 - w /6, h * 2);
+      textAlign(CENTER);
+      textSize(h / 1.3);
+      fill(250, 48, 38);
+      text("Warning Fuel Level Critical", (tlPos.x + w / 6) + (w * 2 - w /6) / 2, (tlPos.y / 2) + h);
+    }
+  }
+  
+  void description()
+  {
+    textAlign(LEFT);
+    textSize(h / 3);
+    fill(255);
+    text("The shuttle only has " + refill + " refills left so wait until the fuel "
+         + "level drops low to to refill again."
+         , tlPos.x + w * 1.1, tlPos.y, w * 1.25, h * 2);
   }
 }

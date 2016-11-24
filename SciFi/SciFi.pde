@@ -11,7 +11,7 @@ Table table;
 PImage cassidy, rubins, williams, glover;
 void setup()
 {
-  fullScreen();
+  fullScreen(P2D);
   //size(1000, 700);
   myAnimation = new Gif(this, "earth.gif");
   myAnimation.play();
@@ -25,11 +25,11 @@ void setup()
   loadData();
   emergencyOx = 14;
   oxStartAngle = (emergencyOx / 100) * 360;
-  oxygenLevel = random(90, 100);
+  oxygenLevel = random(14, 100);
   oxFinishAngle = (oxygenLevel / 100) * 360;
   oxygen = new oTwo(width / 3, height / 8,  width / 10, "o2 Level:");
   temperature = new Temp(width - (width / 8), height / 4,  width / 10, color(255, 0, 0), color(0, 0, 255));
-  fuelLevel = random(75, 100);
+  fuelLevel = random(15, 100);
   fuel = new Fuel(width / 3 - (width / 10) / 2, height / 2, (width / 10) * 3, (width / 10) / 2);
   bottomLineY1 = height - (height / 5);
   bottomLineY2 = height - (height / 4);
@@ -48,9 +48,9 @@ void setup()
   earth = new Earth(bottomLineX2 + (width - bottomLineX1) + picWidth * 2.75, bottomLineY1 - bottomLineY2 + picHeight / 2.5, picWidth * 1.5, picHeight / 1.25);
   startingTime = millis() - (int)random(1500000000, 2000000000);
   distRemaining = (int)random(6000000, 7000000);
-  println(distRemaining);
   speed = 14400;
   maintCall = 0;
+  refill = 2;
 }
 
 float bottomLineY1, bottomLineY2, bottomLineX1, bottomLineX2, gap;
@@ -69,6 +69,7 @@ int speed;
 color generate, c1, c2, c3, c4;
 String status, status1, status2, status3, status4;
 int maintCall;
+int refill;
 
 void draw()
 {
@@ -380,16 +381,21 @@ void draw()
     oxygen.outerBlueArc();
     oxygen.outerRedArc();
     oxygen.increase();
+    oxygen.description();
     temperature.display();
     temperature.increase();
     temperature.decrease();
+    temperature.description();
     fuel.display();
     fuel.increase();
+    fuel.description();
   }
   else if (chosenMenu == 4)
   {
     exit();
   }
+  oxygen.warning();
+  fuel.warning();
 }
 
 void drawLines()
