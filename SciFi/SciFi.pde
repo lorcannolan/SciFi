@@ -7,14 +7,12 @@ Temp temperature;
 Fuel fuel;
 Menu menu;
 Earth earth;
-//BackG back;
 PFont font, loginFont;
 Table table;
 PImage cassidy, rubins, williams, glover, nasa;
 void setup()
 {
   fullScreen(P2D);
-  //size(1000, 700);
   myAnimation = new Gif(this, "earth.gif");
   myAnimation.play();
   font = createFont("AR DESTINE", 60);
@@ -39,10 +37,7 @@ void setup()
   bottomLineX1 = width - (width / 25);
   bottomLineX2 = width - 3 * (width / 4);
   gap = width / 300;
-  col1 = color(59, 71, 72);
-  col2 = color(0, 103, 111);
   menu = new Menu(bottomLineY1 - bottomLineY2, bottomLineX2 - gap, ((bottomLineY2 - (bottomLineY1 - bottomLineY2)) - (bottomLineY1 - bottomLineY2)));
-  //back = new BackG(0, 0, width, height, col1, col2);
   tempLine = height / 4 + (width / 10) / 2;
   picWidth = width / 6.2;
   picHeight = height / 1.92;
@@ -74,7 +69,6 @@ void setup()
 }
 
 float bottomLineY1, bottomLineY2, bottomLineX1, bottomLineX2, gap;
-color col1, col2;
 int chosenMenu = 0;
 float oxygenLevel, emergencyOx, oxStartAngle, oxFinishAngle;
 float tempLine;

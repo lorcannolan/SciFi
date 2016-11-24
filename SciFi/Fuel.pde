@@ -111,7 +111,7 @@ class Fuel
     textAlign(LEFT);
     textSize(h / 3);
     fill(255);
-    text("The shuttle only has " + refill + " refills left so wait until the fuel "
+    text("The shuttle only has " + refill + " refill(s) left so wait until the fuel "
          + "level drops low to to refill again."
          , tlPos.x + w * 1.1, tlPos.y, w * 1.25, h * 2);
   }
