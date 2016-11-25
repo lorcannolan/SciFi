@@ -54,16 +54,16 @@ class Fuel
       text("Re-Fuel", tlPos.x + w / 2, ((tlPos.y + h) + h / 10) + h / 1.75);
       if (mousePressed)
       {
-        if (refill > 0)
-        {
-          refill -= 1;
-        }
         stroke(59, 71, 72);
         noFill();
         rect(tlPos.x + w / 3, (tlPos.y + h) + h / 10, w / 3, h / 1.25);
         while (fuelLevel < 100 && refill != 0)
         {
           fuelLevel += .01;
+        }
+        if (refill > 0)
+        {
+          refill -= 1;
         }
       }
     }
