@@ -47,3 +47,5 @@ The functionality of the logout menu option is simple. If pressed, the user is l
 -	Return by clicking the crew members option again or choose a different option.
 -	In the status screen increase oxygen level by clicking on the fill button, change the temperature by clicking and holding on the (+) or (-) buttons, or increase the fuel level by pressing the re-fuel button.
 - If you are finished, click on the logout option to close the program.
+
+[![Video](http://img.youtube.com/vi/tIF4FbE72iY&feature=youtu.be/0.jpg)](https://www.youtube.com/watch?v=tIF4FbE72iY&feature=youtu.be)
