@@ -39,11 +39,18 @@ The functionality of the logout menu option is simple. If pressed, the user is l
 
 --Instructions--
 
-	To use the login screen, you must click on the text field and type in your name. Be sure to use shift if you are typing a capital letter rather than caps lock as it will display a space between letters.
-	After typing your name, click on the login button rather than pressing the enter key as this will not work.
-	Click on different options in the menu box on the left-hand side of the screen.
-	In the crew screen, hover over a crew member to brighten their picture and display a short bio below.
-	To view their full bio, click on their picture.
-	Return by clicking the crew members option again or choose a different option.
-	In the status screen increase oxygen level by clicking on the fill button, change the temperature by clicking and holding on the (+) or (-) buttons, or increase the fuel level by pressing the re-fuel button.
-	If you are finished, click on the logout option to close the program.
+-	To use the login screen, you must click on the text field and type in your name. Be sure to use shift if you are typing a capital letter rather than caps lock as it will display a space between letters.
+
+-	After typing your name, click on the login button rather than pressing the enter key as this will not work.
+
+-	Click on different options in the menu box on the left-hand side of the screen.
+
+-	In the crew screen, hover over a crew member to brighten their picture and display a short bio below.
+
+-	To view their full bio, click on their picture.
+
+-	Return by clicking the crew members option again or choose a different option.
+
+-	In the status screen increase oxygen level by clicking on the fill button, change the temperature by clicking and holding on the (+) or (-) buttons, or increase the fuel level by pressing the re-fuel button.
+
+- If you are finished, click on the logout option to close the program.
